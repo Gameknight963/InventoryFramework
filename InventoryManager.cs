@@ -8,11 +8,14 @@
         private Dictionary<string, ItemDefinition> _registry = new();
         public IReadOnlyDictionary<string, ItemDefinition> Registry => _registry;
 
+        public event Action<ItemDefinition>? OnItemRegistered;
+
         public void RegisterItem(ItemDefinition def)
         {
             if (_registry.ContainsKey(def.Id))
                 throw new InvalidOperationException($"Item '{def.Id}' already registered.");
             _registry[def.Id] = def;
+            OnItemRegistered?.Invoke(def);
         }
 
         public ItemDefinition GetItem(string id)
