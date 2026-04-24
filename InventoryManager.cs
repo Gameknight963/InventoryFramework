@@ -5,9 +5,27 @@
         public static InventoryManager Instance { get; private set; } = new();
         public Inventory PlayerInventory { get; } = new();
 
+        public InventoryItem? SelectedItem { get; private set; }
+
+        public event Action<InventoryItem?>? OnItemSelected;
+        public event Action<InventoryItem?>? OnItemUsed;
+        public event Action<InventoryItem?>? OnItemAltUsed;
+        public event Action<InventoryItem?>? OnKeyDown;
+        public event Action<InventoryItem?>? OnUpdate;
+
+        public void SelectItem(InventoryItem? item)
+        {
+            SelectedItem = item;
+            OnItemSelected?.Invoke(item);
+        }
+
+        public void UseItem() => OnItemUsed?.Invoke(SelectedItem);
+        public void AltUseItem() => OnItemAltUsed?.Invoke(SelectedItem);
+        public void KeyDown() => OnKeyDown?.Invoke(SelectedItem);
+        public void Tick() => OnUpdate?.Invoke(SelectedItem);
+
         private Dictionary<string, ItemDefinition> _registry = new();
         public IReadOnlyDictionary<string, ItemDefinition> Registry => _registry;
-
         public event Action<ItemDefinition>? OnItemRegistered;
 
         public void RegisterItem(ItemDefinition def)
