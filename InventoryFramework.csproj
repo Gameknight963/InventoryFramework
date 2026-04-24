@@ -27,7 +27,7 @@
 		<Compile Include="InventoryItem.cs" />
 		<Compile Include="InventoryManager.cs" />
 		<Compile Include="ItemDefinition.cs" />
-		<Compile Include="Logger.cs" />
+		<Compile Include="InventoryLogger.cs" />
 		<Content Include="Directory.Build.props" />
 	</ItemGroup>
 
