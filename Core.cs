@@ -1,7 +1,7 @@
 ﻿using MelonLoader;
 using UnityEngine;
 
-[assembly: MelonInfo(typeof(InventoryFramework.Core), "InventoryFramework", "1.0.0", "gameknight963")]
+[assembly: MelonInfo(typeof(InventoryFramework.Core), "InventoryFramework", "1.0.1", "gameknight963")]
 
 namespace InventoryFramework
 {
