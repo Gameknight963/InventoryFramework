@@ -6,6 +6,7 @@
         public IReadOnlyList<InventoryItem> Items => _items;
 
         public event Action? OnChanged;
+        public event Action? OnCleared;
         public event Action<InventoryItem>? OnItemAdded;
         public event Action<InventoryItem>? OnItemRemoved;
         public event Action<InventoryItem>? OnItemQuantityChanged;
@@ -32,7 +33,7 @@
         {
             InventoryItem? item = _items.FirstOrDefault(i => i.Definition.Id == id)
                 ?? throw new InvalidOperationException($"Item '{id}' not found in inventory.");
-            item.Quantity -= quantity;
+            item.Quantity = Math.Max(0, item.Quantity - quantity);
             if (item.Quantity <= 0)
             {
                 _items.Remove(item);
@@ -59,6 +60,7 @@
 
         public void Clear()
         {
+            OnCleared?.Invoke();
             _items.Clear();
             OnChanged?.Invoke();
         }

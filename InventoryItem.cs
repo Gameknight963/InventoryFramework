@@ -5,8 +5,8 @@ namespace InventoryFramework
     [RegisterTypeInIl2Cpp]
     public class InventoryItem : Il2CppSystem.Object
     {
-        public ItemDefinition Definition;
-        public int Quantity;
+        public ItemDefinition Definition { get; init; }
+        public int Quantity { get; set; }
         
         public InventoryItem(ItemDefinition definition, int quantity)
         {

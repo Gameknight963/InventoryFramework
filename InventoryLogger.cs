@@ -1,6 +1,4 @@
-﻿using MelonLoader;
-
-namespace InventoryFramework
+﻿namespace InventoryFramework
 {
     internal class InventoryLogger
     {
