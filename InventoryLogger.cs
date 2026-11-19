@@ -2,6 +2,6 @@
 {
     internal class InventoryLogger
     {
-        internal static void Msg(string msg) => Core.Logger.Msg(msg);
+        internal static void Msg(string msg) => Core.Logger?.Msg(msg);
     }
 }

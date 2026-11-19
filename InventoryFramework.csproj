@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net472</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>disable</Nullable>
 		<RootNamespace>InventoryFramework</RootNamespace>
@@ -10,7 +10,7 @@
 		<FileVersion>1.0.0.0</FileVersion>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<AssemblyName>InventoryFramework</AssemblyName>
-		<LangVersion>latest</LangVersion>
+		<LangVersion>14</LangVersion>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>None</ResolveAssemblyWarnOrErrorOnTargetArchitectureMismatch>
@@ -28,16 +28,16 @@
 		<Compile Include="InventoryManager.cs" />
 		<Compile Include="ItemDefinition.cs" />
 		<Compile Include="InventoryLogger.cs" />
-		<Content Include="Directory.Build.props" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Reference Include="Il2CppInterop.Runtime">
-	    <HintPath>dependencies\Il2CppInterop.Runtime.dll</HintPath>
-	  </Reference>
-	  <Reference Include="Il2Cppmscorlib">
-	    <HintPath>dependencies\Il2Cppmscorlib.dll</HintPath>
-	  </Reference>
+	  <PackageReference Include="IsExternalInit" Version="1.0.3">
+	    <PrivateAssets>all</PrivateAssets>
+	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <Reference Include="MelonLoader">
 	    <HintPath>dependencies\MelonLoader.dll</HintPath>
 	  </Reference>
@@ -51,8 +51,4 @@
 	    <HintPath>dependencies\UnityEngine.InputLegacyModule.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
-	
-	<!--<Target Name="PostBuild" AfterTargets="PostBuildEvent">
-		<Exec Command="COPY &quot;$(TargetPath)&quot; &quot;$(GamePath)/Mods&quot;" />
-	</Target>-->
 </Project>
